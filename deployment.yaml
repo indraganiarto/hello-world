@@ -19,3 +19,12 @@ spec:
           image: arungupta/helloworld-spring-boot:latest
           ports:
             - containerPort: 80
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - 192.168.100.19
+
