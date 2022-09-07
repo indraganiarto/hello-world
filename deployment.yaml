@@ -14,17 +14,18 @@ spec:
       labels:
         app: hello-world
     spec:
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - 192.168.100.19
       containers:
         - name: hello-world
           image: arungupta/helloworld-spring-boot:latest
           ports:
             - containerPort: 80
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - 192.168.100.19
+  
 
